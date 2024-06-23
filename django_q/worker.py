@@ -17,7 +17,9 @@ except core.exceptions.AppRegistryNotReady:
     django.setup()
 
 from django_q.conf import Conf, error_reporter, logger, resource, setproctitle
+from django_q.exceptions import TimeoutException
 from django_q.signals import post_spawn, pre_execute
+from django_q.timeout import TimeoutHandler
 from django_q.utils import close_old_django_connections, get_func_repr
 
 try:
@@ -89,25 +91,37 @@ def worker(
         pre_execute.send(sender="django_q", func=f, task=task)
         # execute the payload
         timer.value = timer_value  # Busy
+        if timer.value != -1:
+            timer.value += 3  # Add buffer so that guard doesn't kill the process on timeout before it gets processed
 
+        timeout_error = False
         try:
             if f is None:
                 # raise a meaningfull error if task["func"] is not a valid function
                 raise ValueError(f"Function {task['func']} is not defined")
-            res = f(*task["args"], **task["kwargs"])
+            with TimeoutHandler(timer_value):
+                res = f(*task["args"], **task["kwargs"])
             result = (res, True)
-        except Exception as e:
+        except (Exception, TimeoutException) as e:
+            if isinstance(e, TimeoutException):
+                timeout_error = True
             result = (f"{e} : {traceback.format_exc()}", False)
             if error_reporter:
                 error_reporter.report()
             if task.get("sync", False):
                 raise
+
         with timer.get_lock():
             # Process result
             task["result"] = result[0]
             task["success"] = result[1]
             task["stopped"] = timezone.now()
             result_queue.put(task)
+            if timeout_error:
+                # force destroy process due to timeout
+                timer.value = 0
+                break
+
             timer.value = -1  # Idle
             if setproctitle:
                 setproctitle.setproctitle(f"qcluster {proc_name} idle")
