@@ -1,6 +1,11 @@
 # Changelog
 
-## [v1.7.0](https://github.com/django-q2/django-q2/tree/v1.7.0) (2024-08-24)
+## [v1.7.1](https://github.com/django-q2/django-q2/tree/v1.7.1) (2024-09-08)
+
+- Fixed date of v1.7.0
+- Fixed README.rst formatting which is blocking release of latest version
+
+## [v1.7.0](https://github.com/django-q2/django-q2/tree/v1.7.0) (2024-09-08)
 
 **Merged pull requests:**
 

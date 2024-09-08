@@ -198,7 +198,7 @@ Admin page or directly from your code:
 For more info check the `Schedules <https://django-q2.readthedocs.org/en/latest/schedules.html>`__ documentation.
 
 Development
-~~~~~~~
+~~~~~~~~~~~
 
 There is an example project that you can use to develop with. Docker (compose) is being used to set everything up.
 Please note that you will have to restart the django-q container when changes have been made to tasks or django-q.
