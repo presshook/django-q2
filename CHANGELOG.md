@@ -1,5 +1,20 @@
 # Changelog
 
+## [v1.7.0](https://github.com/django-q2/django-q2/tree/v1.7.0) (2024-08-24)
+
+**Merged pull requests:**
+
+- Remove support for Django 3.2 and 4.1 https://github.com/django-q2/django-q2/pull/183
+- Fix max attempts for value 1 https://github.com/django-q2/django-q2/pull/185
+- Replace black/isort with ruff https://github.com/django-q2/django-q2/pull/188
+- Fix repeating task after timeout https://github.com/django-q2/django-q2/pull/184
+- fix: Oracle ORM backend compatibility #180 https://github.com/django-q2/django-q2/pull/186
+- chore: Update CI for Django 4.2 Python 3.12 support https://github.com/django-q2/django-q2/pull/208
+- chore: Add Support Django 5.1 https://github.com/django-q2/django-q2/pull/207
+- Call mark_process_dead on worker pid if prometheus_client is installed https://github.com/django-q2/django-q2/pull/212
+- Add example project https://github.com/django-q2/django-q2/pull/215
+- Add index on succeeded tasks https://github.com/django-q2/django-q2/pull/164
+
 ## [v1.6.2](https://github.com/django-q2/django-q2/tree/v1.6.2) (2024-03-05)
 
 **Merged pull requests:**
