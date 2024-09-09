@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.7.2](https://github.com/django-q2/django-q2/tree/v1.7.2) (2024-09-09)
+
+- Fix twine check
+
 ## [v1.7.1](https://github.com/django-q2/django-q2/tree/v1.7.1) (2024-09-08)
 
 - Fixed date of v1.7.0
