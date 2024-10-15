@@ -1,6 +1,6 @@
 import django
 
-VERSION = (1, 7, 2)
+VERSION = (1, 7, 3)
 
 if django.VERSION < (3, 2):
     default_app_config = "django_q.apps.DjangoQConfig"

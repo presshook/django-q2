@@ -1,5 +1,14 @@
 # Changelog
 
+## [v1.7.3](https://github.com/django-q2/django-q2/tree/v1.7.3) (2024-10-15)
+
+- Catch missing SEGALRM with AttributeError instead of ValueError https://github.com/django-q2/django-q2/pull/223
+- Refactor timeout handling to handle AttributeError and ValueError for Windows users https://github.com/django-q2/django-q2/pull/234
+- Fix type check for args in scheduler.py E721 https://github.com/django-q2/django-q2/pull/233
+- Only trigger prometheus if configured https://github.com/django-q2/django-q2/pull/231
+- Fix missing ack_id when finishing task https://github.com/django-q2/django-q2/pull/224
+
+
 ## [v1.7.2](https://github.com/django-q2/django-q2/tree/v1.7.2) (2024-09-09)
 
 - Fix twine check
