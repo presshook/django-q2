@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.7.4](https://github.com/django-q2/django-q2/tree/v1.7.4) (2024-11-03)
+
+- Decrease the MAX_RSS set in test_cluster::test_max_rss https://github.com/django-q2/django-q2/pull/240
+- Fix BROKER_CLASS monkeypatch in test_brokers https://github.com/django-q2/django-q2/pull/239
+- Fix 'receive_message_wait_time_seconds' SQS broker management https://github.com/django-q2/django-q2/pull/243
+
 ## [v1.7.3](https://github.com/django-q2/django-q2/tree/v1.7.3) (2024-10-15)
 
 - Catch missing SEGALRM with AttributeError instead of ValueError https://github.com/django-q2/django-q2/pull/223
